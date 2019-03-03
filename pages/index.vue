@@ -1,10 +1,8 @@
 <template>
   <section class="section">
-    <h1 class="title">{{ name }}</h1>
     <div class="columns">
       <div class="column">
-        <input placeholder="TODO"
-               class="input"
+        <input class="input"
                @keyup.enter="addTodo"
         >
       </div>
@@ -15,13 +13,16 @@
            class="card">
         <div class="card-header">
           <p class="card-header-title">
-            <input type="checkbox" :checked="todo.done" @change="toggle(todo)">
+            <b-checkbox :checked="todo.done"
+                   @change="toggle(todo)"
+                   size="is-large"
+                   type="is-success">
+            </b-checkbox>
             <span :class="{ done: todo.done }">{{ todo.text }}</span>
           </p>
           <a class="card-header-icon">
             <button @click="removeTodo(todo)"
-                    class="button is-danger"
-            >
+                    class="button is-danger">
               remove
             </button>
           </a>
