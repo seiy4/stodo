@@ -3,8 +3,7 @@
     <div class="columns">
       <div class="column">
         <input class="input"
-               @keyup.enter="addTodo"
-        >
+               @keyup.enter="addTodo">
       </div>
     </div>
     <div class="columns">
@@ -18,12 +17,14 @@
                    size="is-large"
                    type="is-success">
             </b-checkbox>
-            <span :class="{ done: todo.done }">{{ todo.text }}</span>
+            <span :class="{ done: todo.done }">
+              {{ todo.text }}
+            </span>
           </p>
           <a class="card-header-icon">
             <button @click="removeTodo(todo)"
                     class="button is-danger">
-              remove
+              Remove
             </button>
           </a>
         </div>
