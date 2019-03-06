@@ -1,3 +1,6 @@
+import firebase from 'firebase'
+import { firebaseMutations, firebaseAction } from 'vuexfire'
+
 export const state = () => ({
   list: []
 })

@@ -12,9 +12,14 @@
   },
   "dependencies": {
     "@nuxtjs/pwa": "^3.0.0-beta.10",
+    "autolinker": "^3.0.3",
     "cross-env": "^5.2.0",
-    "nuxt": "^2.4.0",
-    "nuxt-buefy": "^0.3.2"
+    "firebase": "^5.8.5",
+    "htmlspecialchars": "^1.0.5",
+    "nuxt": "^2.4.5",
+    "nuxt-buefy": "^0.3.4",
+    "vuex-persistedstate": "^2.5.4",
+    "vuexfire": "^3.0.0-alpha.9"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"
