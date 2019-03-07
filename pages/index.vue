@@ -12,19 +12,14 @@
            class="card">
         <div class="card-header">
           <p class="card-header-title">
-            <b-checkbox :checked="todo.done"
-                        @change="toggle(todo)"
-                        size="is-large"
-                        type="is-success">
-            </b-checkbox>
-            <span :class="{ done: todo.done }">
+            <span>
               {{ todo.text }}
             </span>
           </p>
           <a class="card-header-icon">
             <button @click="removeTodo(todo)"
                     class="button is-danger">
-              Remove
+              ☓
             </button>
           </a>
         </div>
@@ -34,7 +29,8 @@
 </template>
 
 <script>
-  import {mapMutations} from 'vuex';
+  import { mapMutations } from 'vuex'
+  import { link } from 'autolinker'
 
   export default {
     data() {
@@ -45,6 +41,9 @@
     computed: {
       todos() {
         return this.$store.state.todos.list
+      },
+      hoge() {
+        return this.todo.text
       }
     },
     methods: {
