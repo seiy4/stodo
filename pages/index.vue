@@ -41,9 +41,6 @@
     computed: {
       todos() {
         return this.$store.state.todos.list
-      },
-      hoge() {
-        return this.todo.text
       }
     },
     methods: {
