@@ -7,23 +7,25 @@
       </div>
     </div>
     <div class="columns">
-      <div v-for="todo in todos"
-           :key="todo.id"
-           class="card">
-        <div class="card-header">
-          <p class="card-header-title">
-            <span>
-              {{ todo.text }}
-            </span>
-          </p>
-          <a class="card-header-icon">
-            <button @click="removeTodo(todo)"
-                    class="button is-danger">
-              ☓
-            </button>
-          </a>
+      <transition-group appear>
+        <div v-for="todo in todos"
+             :key="todo.id"
+             class="card">
+          <div class="card-header">
+            <p class="card-header-title">
+              <span>
+                {{ todo.text }}
+              </span>
+            </p>
+            <a class="card-header-icon">
+              <button @click="removeTodo(todo)"
+                      class="button is-danger">
+                ☓
+              </button>
+            </a>
+          </div>
         </div>
-      </div>
+      </transition-group>
     </div>
   </section>
 </template>
@@ -57,3 +59,27 @@
     }
   }
 </script>
+
+<style scoped>
+  .v-enter-active {
+    animation: slideIn 0.3s linear;
+    /*transition: all .8s ease;*/
+  }
+  .v-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .v-enter,
+  .v-leave-to {
+    /*transform: translateX(10px);*/
+    opacity: 0;
+  }
+
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+</style>
