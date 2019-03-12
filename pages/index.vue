@@ -62,15 +62,27 @@
 
 <style scoped>
   .v-enter-active {
-    animation: slideIn 0.3s linear;
+    /*cubic-bezier(0.0, 0.0, 1.0, 1.0)*/
+    /*animation: slideIn .3s linear;*/
+
+    /*cubic-bezier(0.42, 0, 0.58, 1.0)*/
+    animation: slideIn .3s ease-in-out;
+
+    /*cubic-bezier(0.25, 0.1, 0.25, 1.0)*/
     /*transition: all .8s ease;*/
   }
   .v-leave-active {
-    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    /*transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);*/
+
+    /*cubic-bezier(0.42, 0, 1.0, 1.0)*/
+    /*transition: all .8s ease-in;*/
+
+    /*cubic-bezier(0, 0, 0.58, 1.0)*/
+    transition: all .8s ease-out;
   }
   .v-enter,
   .v-leave-to {
-    /*transform: translateX(10px);*/
+    transform: translateX(10px);
     opacity: 0;
   }
 
