@@ -3,13 +3,14 @@
     <div class="columns">
       <div class="column">
         <input class="input"
+               v-model="text"
                @keyup.enter="addTodo">
       </div>
     </div>
     <div class="columns">
-      <transition-group appear>
-        <div v-for="todo in todos"
-             :key="todo.id"
+      <!--<transition-group appear>-->
+        <div v-for="(todo, index) in todos"
+             :key="index"
              class="card">
           <div class="card-header">
             <p class="card-header-title">
@@ -17,27 +18,27 @@
                 {{ todo.text }}
               </span>
             </p>
-            <a class="card-header-icon">
-              <button @click="removeTodo(todo)"
-                      class="button is-danger">
-                ☓
-              </button>
-            </a>
+            <div class="card-header-icon">
+              <input @click="remove(todo)"
+                     type="button"
+                     value="remove"
+                     class="button is-danger">
+            </div>
           </div>
         </div>
-      </transition-group>
+      <!--</transition-group>-->
     </div>
   </section>
 </template>
 
 <script>
   import { mapMutations } from 'vuex'
-  import { link } from 'autolinker'
 
   export default {
     data() {
       return {
-        name: 'stodo'
+        name: 'stodo',
+        text: ''
       }
     },
     computed: {
@@ -46,15 +47,15 @@
       }
     },
     methods: {
-      removeTodo(todo) {
-        this.$store.commit('todos/remove', todo);
-      },
-      addTodo(e) {
-        this.$store.commit('todos/add', e.target.value)
-        e.target.value = ''
+      addTodo() {
+        if (!this.text) {
+          return
+        }
+        this.$store.commit('todos/add', this.text)
+        this.text = ''
       },
       ...mapMutations({
-        toggle: 'todos/toggle'
+        remove: 'todos/remove'
       })
     }
   }
