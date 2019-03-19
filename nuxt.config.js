@@ -2,10 +2,6 @@ const pkg = require('./package')
 
 module.exports = {
   mode: 'universal',
-
-  /*
-  ** Headers of the page
-  */
   head: {
     title: pkg.name,
     meta: [
@@ -17,27 +13,11 @@ module.exports = {
       {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
     ]
   },
-
-  /*
-  ** Customize the progress-bar color
-  */
   loading: {color: '#fff'},
-
-  /*
-  ** Global CSS
-  */
   css: [],
-
-  /*
-  ** Plugins to load before mounting the App
-  */
   plugins: [
-    {src: "~plugins/persistedstate.js", ssr: false}
+    {src: "~plugins/persistedstate", ssr: false}
   ],
-
-  /*
-  ** Nuxt.js modules
-  */
   modules: [
     // Doc: https://buefy.github.io/#/documentation
     'nuxt-buefy',
@@ -57,13 +37,7 @@ module.exports = {
     theme_color: '#259f94',
     background_color: '#24130d',
   },
-  /*
-  ** Build configuration
-  */
   build: {
-    /*
-    ** You can extend webpack config here
-    */
     extend(config, ctx) {
 
     }

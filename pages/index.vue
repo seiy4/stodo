@@ -7,7 +7,7 @@
                @keyup.enter="addTodo">
       </div>
     </div>
-    <div class="columns">
+    <div class="columns is-multiline">
       <!--<transition-group appear>-->
         <div v-for="(todo, index) in todos"
              :key="index"
