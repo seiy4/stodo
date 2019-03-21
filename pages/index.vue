@@ -4,13 +4,15 @@
       <div class="column">
         <input class="input"
                v-model="text"
+               placeholder="What needs to be done?"
+               autofocus
                @keyup.enter="addTodo">
       </div>
     </div>
     <div class="columns is-multiline">
-      <!--<transition-group appear>-->
-        <div v-for="(todo, index) in todos"
-             :key="index"
+      <transition-group appear>
+        <div v-for="(todo, i) in todos"
+             :key="todo"
              class="card">
           <div class="card-header">
             <p class="card-header-title">
@@ -19,14 +21,14 @@
               </span>
             </p>
             <div class="card-header-icon">
-              <input @click="remove(todo)"
+              <input @click="remove(i)"
                      type="button"
                      value="remove"
                      class="button is-danger">
             </div>
           </div>
         </div>
-      <!--</transition-group>-->
+      </transition-group>
     </div>
   </section>
 </template>

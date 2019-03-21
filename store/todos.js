@@ -9,7 +9,7 @@ export const mutations = {
       id: state.list.length + 1
     })
   },
-  remove(state, { todo }) {
-    state.list.splice(state.list.indexOf(todo), 1)
+  remove(state, { i }) {
+    state.list.splice(state.list.i, 1)
   }
 }
