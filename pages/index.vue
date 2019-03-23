@@ -11,7 +11,7 @@
     </div>
     <div class="columns is-multiline">
       <transition-group appear>
-        <div v-for="(todo, i) in todos"
+        <div v-for="todo in todos"
              :key="todo"
              class="card">
           <div class="card-header">
@@ -21,7 +21,7 @@
               </span>
             </p>
             <div class="card-header-icon">
-              <input @click="remove(i)"
+              <input @click="remove(todo)"
                      type="button"
                      value="remove"
                      class="button is-danger">
