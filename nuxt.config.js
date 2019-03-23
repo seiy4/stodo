@@ -14,14 +14,12 @@ module.exports = {
     ]
   },
   loading: {color: '#fff'},
-  css: [],
   plugins: [
-    {src: "~plugins/persistedstate", ssr: false}
+    'plugins/persistedstate.client'
   ],
   modules: [
-    // Doc: https://buefy.github.io/#/documentation
     'nuxt-buefy',
-    '@nuxtjs/pwa',
+    '@nuxtjs/pwa'
   ],
   workbox: {
     // dev: true
@@ -31,15 +29,14 @@ module.exports = {
     short_name: 'STODO',
     title: 'STODO',
     'og:title': 'STODO',
-    description: 'STODO',
-    'og:description': 'STODO',
-    lang: 'ja',
+    description: 'STODO very simple todo app',
+    'og:description': 'STODO very simple todo app',
+    lang: 'en',
     theme_color: '#259f94',
     background_color: '#24130d',
   },
   build: {
     extend(config, ctx) {
-
     }
   }
 }

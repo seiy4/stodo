@@ -12,7 +12,7 @@
     <div class="columns is-multiline">
       <transition-group appear>
         <div v-for="todo in todos"
-             :key="todo"
+             :key="todo.id"
              class="card">
           <div class="card-header">
             <p class="card-header-title">
@@ -81,7 +81,7 @@
     /*transition: all .8s ease-in;*/
 
     /*cubic-bezier(0, 0, 0.58, 1.0)*/
-    transition: all .8s ease-out;
+    transition: all .3s ease-out;
   }
   .v-enter,
   .v-leave-to {
