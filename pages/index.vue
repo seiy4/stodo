@@ -34,30 +34,30 @@
 </template>
 
 <script>
-  import { mapMutations } from 'vuex'
+  import { mapGetters, mapActions } from 'vuex'
 
   export default {
     data() {
       return {
-        name: 'stodo',
         text: ''
       }
     },
     computed: {
-      todos() {
-        return this.$store.state.todos.list
-      }
+      ...mapGetters('todos', {
+        todos: 'list'
+      })
     },
     methods: {
       addTodo() {
         if (!this.text) {
           return
         }
-        this.$store.commit('todos/add', this.text)
+        this.add(this.text)
         this.text = ''
       },
-      ...mapMutations({
-        remove: 'todos/remove'
+      ...mapActions('todos', {
+        add: 'add',
+        remove: 'remove'
       })
     }
   }
@@ -65,22 +65,9 @@
 
 <style scoped>
   .v-enter-active {
-    /*cubic-bezier(0.0, 0.0, 1.0, 1.0)*/
-    /*animation: slideIn .3s linear;*/
-
-    /*cubic-bezier(0.42, 0, 0.58, 1.0)*/
     animation: slideIn .3s ease-in-out;
-
-    /*cubic-bezier(0.25, 0.1, 0.25, 1.0)*/
-    /*transition: all .8s ease;*/
   }
   .v-leave-active {
-    /*transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);*/
-
-    /*cubic-bezier(0.42, 0, 1.0, 1.0)*/
-    /*transition: all .8s ease-in;*/
-
-    /*cubic-bezier(0, 0, 0.58, 1.0)*/
     transition: all .3s ease-out;
   }
   .v-enter,
