@@ -2,32 +2,17 @@
   <section class="section">
     <div class="columns">
       <div class="column">
-        <input class="input"
-               v-model="text"
-               placeholder="What needs to be done?"
-               autofocus
-               @keyup.enter="addTodo">
+        <TheTodoPostArea @add="add"/>
       </div>
     </div>
     <div class="columns is-multiline">
       <transition-group appear>
-        <div v-for="todo in todos"
-             :key="todo.id"
-             class="card">
-          <div class="card-header">
-            <p class="card-header-title">
-              <span>
-                {{ todo.text }}
-              </span>
-            </p>
-            <div class="card-header-icon">
-              <input @click="remove(todo)"
-                     type="button"
-                     value="remove"
-                     class="button is-danger">
-            </div>
-          </div>
-        </div>
+        <TheTodoList class="card"
+                     v-for="todo in todos"
+                     :key="todo.id"
+                     :todo="todo"
+                     @remove="remove"
+        />
       </transition-group>
     </div>
   </section>
@@ -36,11 +21,13 @@
 <script>
   import { mapGetters, mapActions } from 'vuex'
 
+  import TheTodoPostArea from '~/components/TheTodoPostArea.vue'
+  import TheTodoList from '~/components/TheTodoList.vue'
+
   export default {
-    data() {
-      return {
-        text: ''
-      }
+    components: {
+      TheTodoPostArea,
+      TheTodoList
     },
     computed: {
       ...mapGetters('todos', {
@@ -48,13 +35,6 @@
       })
     },
     methods: {
-      addTodo() {
-        if (!this.text) {
-          return
-        }
-        this.add(this.text)
-        this.text = ''
-      },
       ...mapActions('todos', {
         add: 'add',
         remove: 'remove'
