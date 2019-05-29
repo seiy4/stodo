@@ -8,15 +8,21 @@ export const getters = {
 
 export const mutations = {
   add (state, text) {
-    const last = state.list.slice(-1)[0] || { id: 0 }
+    let last = 0
+    if (state.list.length > 0) {
+      last = Math.max(...state.list.map((p) => p.id))
+    }
 
     state.list.push({
       text: text,
-      id: last.id + 1
+      id: last + 1
     })
   },
   remove (state, todo) {
     state.list.splice(state.list.indexOf(todo), 1)
+  },
+  saveOrder (state, list) {
+    state.list = list
   }
 }
 
@@ -26,5 +32,8 @@ export const actions = {
   },
   remove ({ commit }, todo) {
     commit('remove', todo)
+  },
+  saveOrder ({ commit }, list) {
+    commit('saveOrder', list)
   }
 }

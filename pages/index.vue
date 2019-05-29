@@ -6,10 +6,13 @@
       </div>
     </div>
     <div class="columns is-multiline">
-      <draggable>
-        <transition-group appear>
-          <TheTodoList class="card"
-                       v-for="todo in todos"
+      <draggable
+        v-model="lists"
+        v-bind="dragOptions"
+      >
+        <transition-group type="transition" :name="'flip-list'">
+          <TheTodoList class="card list-group-item"
+                       v-for="todo in lists"
                        :key="todo.id"
                        :todo="todo"
                        @remove="remove"
@@ -17,6 +20,11 @@
         </transition-group>
       </draggable>
     </div>
+<!--    <div class="columns">-->
+<!--      <div class="column">-->
+<!--        <pre>{{listString}}</pre>-->
+<!--      </div>-->
+<!--    </div>-->
   </section>
 </template>
 
@@ -34,16 +42,35 @@
       TheTodoList
     },
     computed: {
-      ...mapGetters('todos', {
-        todos: 'list'
-      })
+      lists: {
+        get () {
+          return this.$store.state.todos.list
+        },
+        set (val) {
+          this.saveOrder(val)
+        }
+      },
+      // ...mapGetters('todos', [
+      //   'list'
+      // ]),
+      dragOptions() {
+        return {
+          animation: 150,
+          group: "description",
+          ghostClass: "ghost"
+        };
+      },
+      // listString() {
+      //   return JSON.stringify(this.lists, null, 2);
+      // },
     },
     methods: {
-      ...mapActions('todos', {
-        add: 'add',
-        remove: 'remove'
-      })
-    }
+      ...mapActions('todos', [
+        'add',
+        'remove',
+        'saveOrder'
+      ])
+    },
   }
 </script>
 
@@ -60,6 +87,10 @@
     opacity: 0;
   }
 
+  .flip-list-move {
+    transition: transform 0.5s;
+  }
+
   @keyframes slideIn {
     0% {
       opacity: 0;
@@ -67,5 +98,14 @@
     100% {
       opacity: 1;
     }
+  }
+
+  .ghost {
+    opacity: 0.5;
+    background: #c8ebfb;
+  }
+
+  .list-group-item {
+    cursor: move;
   }
 </style>

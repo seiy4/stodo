@@ -2,7 +2,7 @@
   <div class="card-header">
     <p class="card-header-title">
       <span>
-        {{ todo.id }} - {{ todo.text }}
+        {{ todo.text }}
       </span>
     </p>
     <div class="card-header-icon">
