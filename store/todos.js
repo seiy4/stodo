@@ -8,9 +8,11 @@ export const getters = {
 
 export const mutations = {
   add (state, text) {
+    const last = state.list.slice(-1)[0] || { id: 0 }
+
     state.list.push({
       text: text,
-      id: state.list.length + 1
+      id: last.id + 1
     })
   },
   remove (state, todo) {

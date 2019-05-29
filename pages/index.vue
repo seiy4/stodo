@@ -6,26 +6,30 @@
       </div>
     </div>
     <div class="columns is-multiline">
-      <transition-group appear>
-        <TheTodoList class="card"
-                     v-for="todo in todos"
-                     :key="todo.id"
-                     :todo="todo"
-                     @remove="remove"
-        />
-      </transition-group>
+      <draggable>
+        <transition-group appear>
+          <TheTodoList class="card"
+                       v-for="todo in todos"
+                       :key="todo.id"
+                       :todo="todo"
+                       @remove="remove"
+          />
+        </transition-group>
+      </draggable>
     </div>
   </section>
 </template>
 
 <script>
   import { mapGetters, mapActions } from 'vuex'
+  import draggable from 'vuedraggable'
 
   import TheTodoPostArea from '~/components/TheTodoPostArea.vue'
   import TheTodoList from '~/components/TheTodoList.vue'
 
   export default {
     components: {
+      draggable,
       TheTodoPostArea,
       TheTodoList
     },

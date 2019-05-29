@@ -17,6 +17,7 @@
     "htmlspecialchars": "^1.0.5",
     "nuxt": "^2.7.1",
     "nuxt-buefy": "^0.3.6",
+    "vuedraggable": "^2.21.0",
     "vuex-persistedstate": "^2.5.4",
     "vuexfire": "^3.0.0-alpha.14"
   },
