@@ -29,7 +29,10 @@ module.exports = {
   ],
   modules: [
     'nuxt-buefy',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-141191223-1'
+    }]
   ],
   workbox: {
     // dev: true
