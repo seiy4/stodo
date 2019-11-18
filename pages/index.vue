@@ -20,11 +20,11 @@
         </transition-group>
       </draggable>
     </div>
-<!--    <div class="columns">-->
-<!--      <div class="column">-->
-<!--        <pre>{{listString}}</pre>-->
-<!--      </div>-->
-<!--    </div>-->
+    <!--<div class="columns">-->
+      <!--<div class="column">-->
+        <!--<pre>{{listString}}</pre>-->
+      <!--</div>-->
+    <!--</div>-->
   </section>
 </template>
 
@@ -55,7 +55,7 @@
       // ]),
       dragOptions() {
         return {
-          animation: 150,
+          animation: 50,
           group: "description",
           ghostClass: "ghost"
         };
